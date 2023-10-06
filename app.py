@@ -3,7 +3,7 @@ from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'  # Replace with your secret key
-socketio = SocketIO(app)
+socketio = SocketIO(app, ping_timeout=120, ping_interval=60, debug=True)
 
 # Initialize a variable to keep track of connected clients
 connected_clients = 0
