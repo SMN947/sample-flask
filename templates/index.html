@@ -10,7 +10,7 @@
 
     socket.on('message', function (data) {
       var p = document.createElement('p');
-      p.innerHTML = data;
+      p.innerHTML = JSON.stringify(data);
       document.getElementById('chat').appendChild(p);
     });
 

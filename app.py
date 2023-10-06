@@ -24,5 +24,10 @@ def handle_disconnect():
     connected_clients -= 1
     emit('update_clients_count', connected_clients, broadcast=True)
 
+@socketio.on('message')  # Handle incoming WebSocket messages
+def handle_message(message):
+    # Broadcast the received message to all connected clients
+    emit('message', message, broadcast=True)
+
 if __name__ == "__main__":
     socketio.run(app, debug=True)
