@@ -1,0 +1,17 @@
+config:
+  target: 'http://your_socket_server_domain_or_ip:your_socket_server_port'
+  phases:
+    - duration: 60  # Duration of the test in seconds
+      arrivalRate: 10  # Number of new connections per second
+  defaults:
+    headers:
+      User-Agent: 'Artillery WebSocket Test'
+
+scenarios:
+  - flow:
+      - loop:
+          - emit:
+              channel: 'message'
+              data: 'Hello, WebSocket Server!'
+          - think: 1  # Wait for 1 second
+        times: 10  # Number of times to repeat the loop
